@@ -1,0 +1,22 @@
+{
+    "$schema": "https://docs.renovatebot.com/renovate-schema.json",
+    "commitMessageAction": "bump up",
+    "commitMessagePrefix": "chore: ",
+    "commitMessageTopic": "{{depName}} version",
+    "extends": [
+      "config:base",
+      "group:allNonMajor",
+      "schedule:weekly",
+      ":preserveSemverRanges",
+      ":disablePeerDependencies",
+      ":dependencyDashboard"
+    ],
+    "ignoreDeps": [],
+    "ignorePaths": [
+      "**/__tests__/**"
+    ],
+    "labels": [
+      "dependencies"
+    ],
+    "rangeStrategy": "bump"
+  }

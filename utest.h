@@ -3,8 +3,8 @@
  * @copyright 2025 sun0day 
  * @description Unit test utils for C
  */
-#ifndef HC_UNIT_H
-#define HC_UNIT_H
+#ifndef UTEST_H
+#define UTEST_H
 
 #define bool unsigned char
 #define true 1
@@ -67,21 +67,6 @@
 #define ut_falsy(expr) { \
   lno line_no = __LINE__; \
   bool passed = !(bool) expr; \
-  _internal_crt.expected_results[_internal_crt.expected_len++] = \
-    (ERT) { passed, line_no }; \
-  _internal_crt.passed = _internal_crt.passed & passed; \
-}
-
-/*
- * Determine if two variables are equal via `==` and collect the result
- *
- * @param a - arbitrary variable
- * @param b - arbitrary variable
- * @return ExpectResult
- */
-#define ut_equal(a, b) { \
-  lno line_no = __LINE__; \
-  bool passed = a == b; \
   _internal_crt.expected_results[_internal_crt.expected_len++] = \
     (ERT) { passed, line_no }; \
   _internal_crt.passed = _internal_crt.passed & passed; \

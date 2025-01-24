@@ -21,4 +21,4 @@ jobs:
       with:
         version: latest
     - name: Run Test
-      run: zig run test.c -I lib -lc
+      run: zig run test.c -lc
