@@ -1,0 +1,24 @@
+name: PR Test
+
+on:
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
+
+jobs:
+  build_test:
+    strategy:
+      matrix:
+        os: [ubuntu-latest, macos-latest, windows-latest]
+
+    runs-on: ${{ matrix.os }}
+
+    steps:
+    - uses: actions/checkout@v4
+    - name: Setup Zig
+      uses: mlugg/setup-zig@v1
+      with:
+        version: latest
+    - name: Run Test
+      run: zig run test.c -I lib -lc
